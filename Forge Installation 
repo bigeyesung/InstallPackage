@@ -1,0 +1,39 @@
+1.install node.js, npm
+https://nodejs.org/en/
+
+2.install angular-cli and set yarn as npm manager:
+the method he used didn't work for me, so I use this one
+
+chenhsi@TheOtter ~ $ yarn global add @angular/cli
+chenhsi@TheOtter ~ $ npm install -g @angular/cli
+chenhsi@TheOtter ~ $ ng config -g cli.packageManager yarn
+
+[Ref]https://blog.angular-university.io/getting-started-with-angular-setup-a-development-environment-with-yarn-the-angular-cli-setup-an-ide/
+[Ref]https://www.gurustop.net/blog/2017/01/26/use-yarn-npm-with-angular-cli
+
+3.install typescript globally:
+chenhsi@TheOtter ~ $ npm install -g typescript
+[Ref]https://blog.teamtreehouse.com/getting-started-typescript
+
+3.clone the project
+chenhsi@TheOtter ~ $ git clone https://github.com/simonmoreau/RevitToIFC.git
+chenhsi@TheOtter ~ $ cd RevitToIFC 
+
+4.install jasmine2.8 locally:
+in RevitToIFC root dir:
+chenhsi@TheOtter ~ $ npm install typescript@2.8
+
+5.link the required dependencies:
+chenhsi@TheOtter ~ $ sudo yarn
+
+6.run
+chenhsi@TheOtter ~ $ ng serve --open
+
+
+optional:
+if some thing goes wrong, before link again:
+1.delete node_module dir: sudo rm -r node_module
+2.delete package-lock.json: sudo rm -r package-lock.json
+3.clean cache: npm cache clean --force
+
+[Ref]https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30310

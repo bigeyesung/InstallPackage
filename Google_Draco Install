@@ -1,0 +1,12 @@
+Check you have gcc compiler (Draco is written in C++)
+Install CMake, I use the link below to "opt" folder
+https://geeksww.com/tutorials/operating_systems/linux/installation/downloading_compiling_and_installing_cmake_on_linux.php
+git clone https://github.com/google/draco
+in draco root repository create a build folder: mkdir draco_build
+cd draco_build
+/opt/cmake/bin/cmake  ../
+make
+
+
+encode: ./draco_encoder -i myfile.ply -o myfile.drc
+decode:./draco_decoder -i myfile.drc -o myfile.ply

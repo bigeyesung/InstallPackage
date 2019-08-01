@@ -1,0 +1,13 @@
+https://askubuntu.com/questions/1049302/wired-ethernet-not-working-ubuntu-18-04
+https://askubuntu.com/questions/10741/how-to-set-up-dual-wired-and-wireless-connections
+https://askubuntu.com/questions/359856/share-wireless-internet-connection-through-ethernet
+https://www.cyberciti.biz/faq/linux-list-network-cards-command/
+
+Set your dual network
+https://askubuntu.com/questions/10741/how-to-set-up-dual-wired-and-wireless-connections
+
+set your local network IP and mask
+https://askubuntu.com/questions/359856/share-wireless-internet-connection-through-ethernet
+
+set firewall allows incoming connection.
+$ gufw

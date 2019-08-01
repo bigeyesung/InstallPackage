@@ -1,0 +1,23 @@
+show current folder files:
+aws s3 ls
+aws s3 ls s3://contiliomaltby/folder/
+
+remove current folder files:
+aws s3 rm  s3://contiliomaltby/folder/test.tar.gz
+
+create a bucket(folder):
+$ aws s3 mb s3://bucket-name
+
+
+copy local files to aws:
+aws s3 cp test.tar.gz  s3://contiliomaltby/folder/
+
+download files from aws to local dir:
+aws s3 cp s3://mybucket . --recursive
+
+
+
+
+
+ref:
+https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html

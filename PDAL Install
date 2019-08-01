@@ -1,0 +1,15 @@
+We recommend installing PDAL and the PDAL Python extension in an environment other than the base environment
+pdal: will install the PDAL binaries and development files.
+python-pdal: will install the PDAL Python extension.
+
+install in new env:
+ - conda create --yes --name <myenv> --channel conda-forge pdal python-pdal gdal
+
+install in existing env:
+ - conda install --name <myenv> --channel conda-forge pdal python-pdal gdal
+
+
+ref: https://pdal.io/quickstart.html
+
+
+

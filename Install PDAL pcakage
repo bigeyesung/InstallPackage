@@ -1,0 +1,57 @@
+In my suggestion, clone your env first:
+$ conda create --name myclone --clone myenv
+
+Opt: I update conda to lattest version( conda 4.7.5)
+$ conda update conda
+
+As conda revert function doesn't work, so I reinstall all packages again.
+$ conda activate py35
+$ conda install numpy spyder
+
+Install ifcopenshell
+Install pye57
+
+Install opencASCADE(conflict in my laptop) https://anaconda.org/dlr-sc/pythonocc-core
+$ conda install -c dlr-sc pythonocc-core
+
+Install Open3d
+$ conda install -c open3d-admin open3d==0.7.0.0
+
+Install pcl
+$ sudo apt-get install libflann1.8 libflann-dev
+$ sudo apt-get install libeigen3-dev
+$ sudo apt-get install libboost-all-dev
+$ sudo apt-get install libpcl-dev -y
+$ sudo apt install libproj-dev
+$ pip install -U setuptools
+$ pip install python-pcl
+
+Install pdal
+$ conda install --name <myenv> --channel conda-forge pdal python-pdal gdal
+
+If you test, you usually get errors.
+$ import pdal
+It is usually dynamic linked lib problem, e.g. ImportError: libkea.so.1.4.7: cannot open shared object file: No such file or directory. In my case, the first error is " can't find libkea.so.1.4.7 ":
+Then I only update it.
+$ conda update kealib
+
+If you still find other .so are missing. You have to add the path manually to let the program find the .so files. The steps are below:
+
+Find your .so path location:
+(test) chenhsi@TheOtter ~ $ sudo find / -name  libgeotiff.so.2
+/snap/cloudcompare/200/usr/lib/x86_64-linux-gnu/libgeotiff.so.2
+/home/chenhsi/anaconda3/pkgs/geotiff-1.5.1-h560c3f3_2/lib/libgeotiff.so.2
+find: ‘/run/user/1001/gvfs’: Permission denied
+
+
+In your ".bashrc", add the location where your .so is. 
+If there are multiple paths add ":" to separate each path. Samples are as below,
+
+export LD_LIBRARY_PATH=/home/chenhsi/anaconda3/pkgs/geotiff-1.5.1-h560c3f3_2/lib:/home/chenhsi/anaconda3/pkgs/poppler-0.65.0-h581218d_1/lib:/home/chenhsi/anaconda3/pkgs/proj4-6.1.0-he751ad9_2/lib:/home/chenhsi/anaconda3/envs/py35/lib
+
+If you don't find the .so it is usually due to the version problem. E.g. x.so.1.66.0 doesn't exist
+Then you have to copy other version and rename it to the version you want. E.g. x.so.1.67.0 -> x.so.1.66.0
+Then copy the path to .bashrc.
+
+
+

@@ -1,0 +1,15 @@
+  - git clone https://github.com/LASzip/LASzip.git
+  - cd LASzip
+  - git checkout 3.1.0
+In draco root repository create a build folder: mkdir laszip_build
+  - cd laszip_build
+  - /opt/cmake/bin/cmake  ../
+  - make
+  - sudo make install
+  - cd ..
+Download http://lastools.org/download/LAStools.zip
+  - unzip LAStools.zip
+  - cd LAStools
+  - make
+  - sudo cp bin/laszip /usr/local/bin
+  - sudo ln -s /usr/local/bin/laszip /usr/local/bin/laszip-cli

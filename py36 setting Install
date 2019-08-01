@@ -1,0 +1,104 @@
+Find install steps of all our tools into py36 below. Pls try it and tell me if anything doesn't work as expected.... you can change the environment name if you like.
+
+# environment
+conda update conda -n base
+conda create -n py36 python=3.6
+conda activate py36
+
+# numpy, spyder
+conda install numpy spyder
+
+# pye57
+sudo apt-get install libxerces-c-dev
+mkdir ~/tmp
+cd ~/tmp
+git clone --recursive https://github.com/davidcaron/pye57.git
+cd pye57/
+git checkout v0.2.3
+pip install -e .
+
+# open3d
+conda install -c open3d-admin open3d
+
+# python-pcl
+sudo apt-get install libpcl-dev
+pip install -U setuptools
+pip install python-pcl
+
+# OCC
+conda install  -c conda-forge -c tpaviot -c dlr-sc -c pythonocc -c oce pythonocc-core
+
+# ifcopenshell
+conda install -c conda-forge -c oce -c dlr-sc -c ifcopenshell ifcopenshell
+
+# pymesh
+conda install scipy
+sudo apt-get install libtinyxml2-dev
+conda install nose
+cd ~/tmp
+https://drive.google.com/open?id=111fmyj5L60K3mY53fgorzpspCF-poCJ_ pymesh2-0.2.1-cp36-cp36m-linux_x86_64.whl
+pip install pymesh2-0.2.1-cp36-cp36m-linux_x86_64.whl
+
+# python-pdal
+conda install -c conda-forge libiconv
+conda install -c conda-forge pdal==1.9.0
+conda install -c conda-forge python-pdal
+
+# quick test
+python
+import numpy
+import pye57
+import open3d
+import pcl
+import ifcopenshell
+import ifcopenshell.geom
+import pymesh
+pymesh.test()
+import pdal
+
+# expected output
+(py36_2) agl@themint64 ~/tmp/PyMesh/dist $ python
+Python 3.6.8 |Anaconda, Inc.| (default, Dec 30 2018, 01:22:34) 
+[GCC 7.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import numpy
+>>> import pye57
+>>> import open3d
+>>> import pcl
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'pcl'
+>>> import ifcopenshell
+>>> import ifcopenshell.geom
+/home/agl/anaconda3/envs/py36_2/lib/python3.6/site-packages/OCC/BRepTools.py:3: DeprecationWarning: OCC.BRepTools is deprecated since pythonocc-0.18.2. Use OCC.Core.BRepTools
+  warnings.warn("OCC.BRepTools is deprecated since pythonocc-0.18.2. Use OCC.Core.BRepTools", DeprecationWarning)
+/home/agl/anaconda3/envs/py36_2/lib/python3.6/site-packages/OCC/TopoDS.py:3: DeprecationWarning: OCC.TopoDS is deprecated since pythonocc-0.18.2. Use OCC.Core.TopoDS
+  warnings.warn("OCC.TopoDS is deprecated since pythonocc-0.18.2. Use OCC.Core.TopoDS", DeprecationWarning)
+>>> import pymesh
+>>> pymesh.test()
+/home/agl/anaconda3/envs/py36_2/lib/python3.6/site-packages/nose/importer.py:12: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+  from imp import find_module, load_module, acquire_lock, release_lock
+Running unit tests for pymesh
+NumPy version 1.16.4
+NumPy relaxed strides checking option: True
+NumPy is installed in /home/agl/anaconda3/envs/py36_2/lib/python3.6/site-packages/numpy
+Python version 3.6.8 |Anaconda, Inc.| (default, Dec 30 2018, 01:22:34) [GCC 7.3.0]
+nose version 1.3.7
+....................................................................................................................................................................S.......
+----------------------------------------------------------------------
+Ran 172 tests in 4.431s
+
+OK (SKIP=1)
+<nose.result.TextTestResult run=172 errors=0 failures=0>
+>>> import pdal
+>>>
+
+# patch OCC Display (when OCC shows you a graphical window, you can exit by pressing 'E' key)
+edit file: anaconda3/envs/py36/lib/python3.6/site-packages/OCC/Display/qtDisplay.py
+replace line 135 with the following two lines:
+                         ord('G'): self._display.SetSelectionMode,
+                         ord('E'): self._qApp.quit}
+
+# patch ifcopenshell to work w OCC 0.18.2
+replace corresponding files in anaconda3/envs/py36/lib/python3.6/site-packages/ifcopenshell/geom/
+with the ones in https://drive.google.com/drive/folders/11Ib5ZxrgQk-uIWUbMR9uwW1lbDEmDtUg?usp=sharing
