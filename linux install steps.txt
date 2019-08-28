@@ -1,0 +1,26 @@
+#Create linux USB stick
+
+1.Follow the steps to install Linux:
+root space: 20 GB
+swap soace: 8G (same as my RAM)
+home space: 72 GB
+ref: https://itsfoss.com/guide-install-linux-mint-16-dual-boot-windows/
+
+#Graphic card issue
+In EFI mode, highlight the Start Linux Mint option and press e to modify the boot options.Replace "quiet splash" with "nomodeset" and press F10 to boot.
+
+https://linuxmint-installation-guide.readthedocs.io/en/latest/boot_options.html
+
+#can't reboot or log out:
+
+To add the Proprietary GPU Drivers PPA in Linux Mint and update the software sources in the terminal, use the following commands:
+$ sudo add-apt-repository ppa:graphics-drivers/ppa
+$ sudo apt update
+Close terminal then open the Driver Manager and install latest nVidia drivers - then reboot hope this helps
+
+Update kernel to 4.18.1:
+$ sudo add-apt-repository ppa:teejee2008/ppa
+$ sudo apt-get update
+$ sudo apt-get install ukuu
+open ukuu and update kernel to 4.18.1
+ref: https://itsfoss.com/upgrade-linux-kernel-ubuntu/
