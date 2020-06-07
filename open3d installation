@@ -1,0 +1,15 @@
+pre-requist:
+$ sudo apt install mesa-common-dev
+$ sudo apt install libglu1-mesa-dev freeglut3-dev
+$ 
+$ git clone --recursive https://github.com/intel-isl/Open3D
+$ cd Open3D
+$ mkdir build && cd build
+$ cmake -DENABLE_HEADLESS_RENDERING=ON \
+                 -DENABLE_GUI=OFF \
+                 -DBUILD_GLEW=ON \
+                 -DBUILD_GLFW=ON \
+                 ..
+$ make -j$(nproc)
+$ make install-pip-package
+$ pip install -U \path\to\wheel.whl
