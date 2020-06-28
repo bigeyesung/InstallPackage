@@ -1,0 +1,8 @@
+git clone --recursive https://github.com/davidcaron/pye57.git
+
+cd pye57
+python setup.py bdist_wheel
+cd dist
+pip install pye57-0.2.3-cp36-cp36m-linux_x86_64.whl
+
+
