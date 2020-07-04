@@ -1,0 +1,15 @@
+# https://github.com/facebookresearch/votenet
+
+# install CUDA 10.0
+https://developer.nvidia.com/cuda-10.0-download-archive
+# Download directly in the website then
+`sudo dpkg -i cuda-repo-ubuntu1804-10-0-local-10.0.130-410.48_1.0-1_amd64.deb`
+`sudo apt-key add /var/cuda-repo-<version>/7fa2af80.pub`
+`sudo apt-get update`
+`sudo apt-get install cuda`
+
+# install Pytorch v1.2.0
+conda install pytorch==1.2.0 torchvision==0.4.0 cudatoolkit=10.0 -c pytorch
+
+# install tensorflow-gpu v1.14
+pip install tensorflow-gpu==1.14
