@@ -1,7 +1,9 @@
 #Create linux USB stick
 
 1.Follow the steps to install Linux:
-root space: 20 GB
+usr  space: 20 GB (for installing libs)
+var  space: 20 GB (for installing libs)
+root space: 30 GB
 swap soace: 8G (same as my RAM)
 home space: 72 GB
 ref: https://itsfoss.com/guide-install-linux-mint-16-dual-boot-windows/
